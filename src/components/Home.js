@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import myGif from '../img/1.gif';
 import myGifT from '../img/2.gif';
 import myxe from '../img/myxe.png';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const Home = () => {
     const [clicks, setClicks] = useState(0); // Кількість натискань
@@ -53,6 +54,7 @@ const Home = () => {
         {showImages && <img className='gif-one' src={myGifT}/>}
         {showImages && <img className='gif-two' src={myGif}/>}
         {showTitle && <p>АГА, Думала всьо так просто?<br></br>(султанчик може втікати за екранчик хіхіхі)</p>}
+        <SpeedInsights />
         {showButton && <button
             className='home-btn'
             style={{ left: x, top: y }}
