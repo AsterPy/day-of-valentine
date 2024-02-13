@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import myGif from '../img/1.gif';
 import myGifT from '../img/2.gif';
+import myxe from '../img/myxe.png';
 
 const Home = () => {
     const [clicks, setClicks] = useState(0); // Кількість натискань
@@ -8,7 +9,7 @@ const Home = () => {
     const [x, setX] = useState(0); // Координата X
     const [y, setY] = useState(0); // Координата Y
     const [showImages, setShowImages] = useState(true); // Відображення зображень
-    const [showTitle, setShowTitle] = useState(true); // Відображення заголовка
+    const [showTitle, setShowTitle] = useState(false); // Відображення заголовка
     const [showButton, setshowButton] = useState(true);
 
     const handleClick = () => {
@@ -21,13 +22,20 @@ const Home = () => {
         setX(newX);
         setY(newY);
 
+        if (clicks === 0) {
+            setShowModal(false);
+            setShowImages(true);
+            setShowTitle(true);
+            setshowButton(true);
+        }
         // Відображення модального вікна та приховування інших елементів після 5 натискань
-        if (clicks === 4) {
+        if (clicks === 9) {
         setShowModal(true);
         setShowImages(false);
         setShowTitle(false);
         setshowButton(false);
         }
+
     };
 
     const handleCloseModal = () => {
@@ -44,14 +52,12 @@ const Home = () => {
         <div className='wrapper'>
         {showImages && <img className='gif-one' src={myGifT}/>}
         {showImages && <img className='gif-two' src={myGif}/>}
-        {showTitle && <h1>Юлясік, тримай онлайн валентинку</h1>}
+        {showTitle && <p>АГА, Думала всьо так просто?<br></br>(султанчик може втікати за екранчик хіхіхі)</p>}
         {showButton && <button
             className='home-btn'
             style={{ left: x, top: y }}
             onClick={handleClick}
-        >
-            Отримати
-        </button>}
+        ></button>}
         {showModal && (
             <Modal
             onClose={handleCloseModal}
@@ -64,9 +70,11 @@ const Home = () => {
     const Modal = ({ onClose }) => {
     return (
         <div className='modal'>
-            <button onClick={onClose}>Закрити</button>
-            <h1>Вітаюююююю!</h1>
-            <p>Ти найпрекрасніша дівчина яку я коли небуть бачив!</p>
+            <h1 style={{margin: 0}}>Мухехехе</h1>
+            <p>Зловила султанчика, МОЛОДЕЦЬ, ЛюБлЮ тЕбЕ 😈</p>
+            <img className='myxe' src={myxe}/>
+            <p>Як будемо в франківську куплю тобі сінабона хіхіхіхііх</p>
+            <a className='myxe-btn' onClick={onClose} href='https://youtu.be/m5UzAvL2Y74?si=ZvjvOg_Od82SaIaA'>ЖМЯК</a>
         </div>
     );
 };
